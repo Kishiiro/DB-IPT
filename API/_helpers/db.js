@@ -29,7 +29,7 @@ async function initialize() {
     db.Employee.belongsTo(db.Office, { foreignKey: "officeCode" });
     db.Inventory.belongsTo(db.Product, { foreignKey: "productCode" });
     db.Inventory.belongsTo(db.Office, { foreignKey: "officeCode" });
-    db.Inventory.belongsTo(db.Product, { foreignKey:"productName" });
+    //db.Inventory.belongsTo(db.Product, { foreignKey:"productName" });
 
 
     // sync all models with database
