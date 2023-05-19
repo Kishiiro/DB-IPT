@@ -163,6 +163,7 @@ const AddModal = ({ setShowModal, setReload }: any) => {
                   id="jobTitle"
                   className="w-[18rem] h-[2.5rem] block mt-2 px-4 py-1 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 outline-none"
                 >
+                  <option value="President">Admin</option>
                   <option value="President">President</option>
                   <option value="VP Sales">VP Sales</option>
                   <option value="VP Marketing">VP Marketing</option>
