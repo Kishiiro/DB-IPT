@@ -36,21 +36,21 @@ function getById(req, res, next) {
 function create(req, res, next) {
   officeService
     .create(req.body)
-    .then(() => res.json({ message: "Employee created" }))
+    .then(() => res.json({ message: "OFfice created" }))
     .catch(next);
 }
 
 function update(req, res, next) {
   officeService
     .update(req.params.id, req.body)
-    .then(() => res.json({ message: "Employee updated" }))
+    .then(() => res.json({ message: "Office updated" }))
     .catch(next);
 }
 
 function _delete(req, res, next) {
   officeService
     .delete(req.params.id)
-    .then(() => res.json({ message: "Employee deleted" }))
+    .then(() => res.json({ message: "Office deleted" }))
     .catch(next);
 }
 
