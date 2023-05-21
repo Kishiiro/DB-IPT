@@ -1,15 +1,16 @@
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import AddModal from "../components/addmodal";
-import EditModal from "../components/editmodal";
+
+import AddOfficeModal from "../components/AddOfficeModal";
+import EditOfficeModal from "../components/EditOfficeModal";
 
 const office = () => {
 
   const [office, setOffices] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editUser, setEditUser] = useState<any>({});
+  const [editOffice, setEditOffice] = useState<any>({});
   const [reload, setReload] = useState(0);
   const navigate = useNavigate();
 
@@ -34,11 +35,11 @@ const office = () => {
   return (
     <>
       {showModal && (
-        <AddModal setReload={setReload} setShowModal={setShowModal} />
+        <AddOfficeModal setReload={setReload} setShowModal={setShowModal} />
       )}
       {showEditModal && (
-        <EditModal
-          editUser={editUser}
+        <EditOfficeModal
+          editOffice={editOffice}
           setReload={setReload}
           setShowEditModal={setShowEditModal}
         />
@@ -96,7 +97,7 @@ const office = () => {
                 <td>
                   <button
                     onClick={async () => {
-                      setEditUser({
+                      setEditOffice({
                         officeCode: office.officeCode,
                         phone: office.phone,
                         city: office.city,
