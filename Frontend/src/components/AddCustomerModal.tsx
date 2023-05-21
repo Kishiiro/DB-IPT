@@ -22,20 +22,20 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
     const data = {
       customerNumber: customerNumber.current.value,
       customerName: customerName.current.value,
-      contactLastNameRef: contactLastNameRef.current.value,
-      contactFirstNameRef: contactFirstNameRef.current.value,
-      phoneRef: phoneRef.current.value,
-      addressLine1Ref: addressLine1Ref.current.value,
-      addressLine2Ref: addressLine2Ref.current.value,
-      cityRef: cityRef.current.value,
-      stateRef: stateRef.current.value,
-      postalCodeRef: Number(postalCodeRef.current.value),
-      countryRef: countryRef.current.value,
-      salesRepEmployeeNumberRef: Number(salesRepEmployeeNumberRef.current.value),
-      creditLimitRef: Number(creditLimitRef.current.value),
+      contactLastName: contactLastNameRef.current.value,
+      contactFirstName: contactFirstNameRef.current.value,
+      phone: phoneRef.current.value,
+      addressLine1: addressLine1Ref.current.value,
+      addressLine2: addressLine2Ref.current.value == "" ? null : addressLine2Ref.current.value,
+      city: cityRef.current.value,
+      state: stateRef.current.value == "" ? null : stateRef.current.value,
+      postalCode: postalCodeRef.current.value == "" ? null : postalCodeRef.current.value,
+      country: countryRef.current.value,
+      salesRepEmployeeNumber: salesRepEmployeeNumberRef.current.value == "" ? null : salesRepEmployeeNumberRef.current.value,
+      creditLimit: creditLimitRef.current.value == "" ? null : creditLimitRef.current.value,
     };
 
-    const response = await Axios.post("/offices/create", data);
+    const response = await Axios.post("/customers/create", data);
     setReload((prev: any) => prev + 1);
     setShowModal(false);
     console.log(response.data);

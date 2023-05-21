@@ -10,30 +10,30 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
     const contactFirstNameRef = useRef<any>("");
     const phoneRef = useRef<any>("");
     const addressLine1Ref = useRef<any>("");
-    const addressLine2Ref = useRef<any>("");
+    const addressLine2Ref = useRef<any>(null);
     const cityRef = useRef<any>("");
-    const stateRef = useRef<any>("");
-    const postalCodeRef = useRef<any>("");
+    const stateRef = useRef<any>(null);
+    const postalCodeRef = useRef<any>(null);
     const countryRef = useRef<any>("");
-    const salesRepEmployeeNumberRef  = useRef<any>("");
-    const creditLimitRef   = useRef<any>("");
+    const salesRepEmployeeNumberRef  = useRef<any>(null);
+    const creditLimitRef   = useRef<any>(null);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
     const data = {
         customerNumber: customerNumber.current.value,
         customerName: customerName.current.value,
-        contactLastNameRef: contactLastNameRef.current.value,
-        contactFirstNameRef: contactFirstNameRef.current.value,
-        phoneRef: phoneRef.current.value,
-        addressLine1Ref: addressLine1Ref.current.value,
-        addressLine2Ref: addressLine2Ref.current.value,
-        cityRef: cityRef.current.value,
-        stateRef: stateRef.current.value,
-        postalCodeRef: Number(postalCodeRef.current.value),
-        countryRef: countryRef.current.value,
-        salesRepEmployeeNumberRef: Number(salesRepEmployeeNumberRef.current.value),
-        creditLimitRef: Number(creditLimitRef.current.value),
+        contactLastName: contactLastNameRef.current.value,
+        contactFirstName: contactFirstNameRef.current.value,
+        phone: phoneRef.current.value,
+        addressLine1: addressLine1Ref.current.value,
+        addressLine2: addressLine2Ref.current.value == "" ? null : addressLine2Ref.current.value,
+        city: cityRef.current.value,
+        state: stateRef.current.value == "" ? null : stateRef.current.value,
+        postalCode: postalCodeRef.current.value == "" ? null : postalCodeRef.current.value,
+        country: countryRef.current.value,
+        salesRepEmployeeNumber: salesRepEmployeeNumberRef.current.value == "" ? null : salesRepEmployeeNumberRef.current.value,
+        creditLimit: creditLimitRef.current.value == "" ? null : creditLimitRef.current.value,
     };
 
     const response = await Axios.put(
@@ -258,7 +258,6 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
         </div>
       </form>
     </Modal>
-    //
   );
 };
 
