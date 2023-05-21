@@ -19,17 +19,14 @@ async function getById(id) {
 
 async function create(params) {
   // validate
-  if (await db.Orders.findOne({ where: { orderNumber : params.orderNumber  } })) {
-    throw 'Order Number "' + params.orderNumber  + '" is already registered';
+  if (await db.Orders.findOne({ where: { orderNumber: params.orderNumber } })) {
+    throw 'Order "' + params.orderNumber + '" is already registered';
   }
 
-  const orders = new db.Orders(params);
+  const order = new db.Orders(params);
 
-  // hash password
-  orders.passwordHash = await bcrypt.hash(params.password, 10);
-
-  // save orders
-  await orders.save();
+  // save order
+  await order.save();
 }
 
 async function update(id, params) {
