@@ -198,7 +198,7 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
               
               <div className="block mb-4">
                 <label htmlFor="country" className="font-semibold text-[1.15rem]">
-                  State
+                  country
                 </label>
                 <input
                   ref={countryRef}
@@ -209,7 +209,7 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
               </div>
               <div className="block mb-4">
                 <label htmlFor="salesRepEmployeeNumber" className="font-semibold text-[1.15rem]">
-                  State
+                  Employee Number
                 </label>
                 <input
                   ref={salesRepEmployeeNumberRef}
@@ -220,7 +220,7 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
               </div>
               <div className="block mb-4">
                 <label htmlFor="creditLimit" className="font-semibold text-[1.15rem]">
-                  State
+                  Credit Limit
                 </label>
                 <input
                   ref={creditLimitRef}
