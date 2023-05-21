@@ -76,7 +76,6 @@ const Product = () => {
               <th className="py-2 px-4">Quantity In Stock</th>
               <th className="py-2 px-4">Buy Price</th>
               <th className="py-2 px-4">MSRP</th>
-              <th className="py-2 px-4">Text Description</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -93,7 +92,6 @@ const Product = () => {
                 <td>{product.quantityInStock}</td>
                 <td>{product.buyPrice}</td>
                 <td>{product.MSRP}</td>
-                <td>{product.textDescription}</td>
                 <td>
                   <button
                     onClick={async () => {
