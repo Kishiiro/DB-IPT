@@ -258,6 +258,7 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
         </div>
       </form>
     </Modal>
+    //
   );
 };
 
