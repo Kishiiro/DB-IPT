@@ -57,9 +57,9 @@ function _delete(req, res, next) {
 function createSchema(req, res, next) {
   const schema = Joi.object({
     productLine: Joi.string().required(),
-    textDescription: Joi.string().required(null),
-    htmlDescription: Joi.string().required(null),
-    image: Joi.string().required(null)
+    textDescription: Joi.string().allow(null).required(),
+    htmlDescription: Joi.string().allow(null).required(),
+    image: Joi.string().allow(null).required()
   });
   validateRequest(req, next, schema);
 }
@@ -67,9 +67,9 @@ function createSchema(req, res, next) {
 function updateSchema(req, res, next) {
   const schema = Joi.object({
     productLine: Joi.string().required(),
-    textDescription: Joi.string().required(),
-    htmlDescription: Joi.string().required(),
-    image: Joi.string().required()
+    textDescription: Joi.string().allow(null).required(),
+    htmlDescription: Joi.string().allow(null).required(),
+    image: Joi.string().allow(null).required()
   });
   validateRequest(req, next, schema);
 }
