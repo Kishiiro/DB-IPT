@@ -11,7 +11,6 @@ const AddOrderModal = ({ setShowModal, setReload }: any) => {
   const commentsRef = useRef<any>(null);
   const customerNumberRef = useRef<any>("");
 
-
   const submitHandler = async (e: any) => {
     e.preventDefault();
     const data = {
@@ -20,9 +19,9 @@ const AddOrderModal = ({ setShowModal, setReload }: any) => {
       requiredDate: requiredDateRef.current.value,
       shippedDate: shippedDateRef.current.value,
       status: statusRef.current.value,
-      comments: commentsRef.current.value == "" ? null : commentsRef.current.value,
+      comments:
+        commentsRef.current.value == "" ? null : commentsRef.current.value,
       customerNumber: customerNumberRef.current.value,
-      
     };
 
     const response = await Axios.post("/orders/create", data);

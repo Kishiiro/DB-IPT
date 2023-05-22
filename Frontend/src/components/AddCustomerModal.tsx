@@ -3,7 +3,7 @@ import Modal from "./modal";
 import Axios from "axios";
 
 const AddCustomerModal = ({ setShowModal, setReload }: any) => {
-  const customerNumber  = useRef<any>("");
+  const customerNumber = useRef<any>("");
   const customerName = useRef<any>("");
   const contactLastNameRef = useRef<any>("");
   const contactFirstNameRef = useRef<any>("");
@@ -14,8 +14,8 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
   const stateRef = useRef<any>(null);
   const postalCodeRef = useRef<any>(null);
   const countryRef = useRef<any>("");
-  const salesRepEmployeeNumberRef  = useRef<any>(null);
-  const creditLimitRef   = useRef<any>(null);
+  const salesRepEmployeeNumberRef = useRef<any>(null);
+  const creditLimitRef = useRef<any>(null);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -26,13 +26,23 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
       contactFirstName: contactFirstNameRef.current.value,
       phone: phoneRef.current.value,
       addressLine1: addressLine1Ref.current.value,
-      addressLine2: addressLine2Ref.current.value == "" ? null : addressLine2Ref.current.value,
+      addressLine2:
+        addressLine2Ref.current.value == ""
+          ? null
+          : addressLine2Ref.current.value,
       city: cityRef.current.value,
       state: stateRef.current.value == "" ? null : stateRef.current.value,
-      postalCode: postalCodeRef.current.value == "" ? null : postalCodeRef.current.value,
+      postalCode:
+        postalCodeRef.current.value == "" ? null : postalCodeRef.current.value,
       country: countryRef.current.value,
-      salesRepEmployeeNumber: salesRepEmployeeNumberRef.current.value == "" ? null : salesRepEmployeeNumberRef.current.value,
-      creditLimit: creditLimitRef.current.value == "" ? null : creditLimitRef.current.value,
+      salesRepEmployeeNumber:
+        salesRepEmployeeNumberRef.current.value == ""
+          ? null
+          : salesRepEmployeeNumberRef.current.value,
+      creditLimit:
+        creditLimitRef.current.value == ""
+          ? null
+          : creditLimitRef.current.value,
     };
 
     const response = await Axios.post("/customers/create", data);
@@ -160,10 +170,7 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
                 </div>
               </div>
               <div className="block mb-4">
-                <label
-                  htmlFor="city"
-                  className="font-semibold text-[1.15rem]"
-                >
+                <label htmlFor="city" className="font-semibold text-[1.15rem]">
                   City
                 </label>
                 <input
@@ -195,9 +202,12 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
                 />
               </div>
-              
+
               <div className="block mb-4">
-                <label htmlFor="country" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="country"
+                  className="font-semibold text-[1.15rem]"
+                >
                   country
                 </label>
                 <input
@@ -208,7 +218,10 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="salesRepEmployeeNumber" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="salesRepEmployeeNumber"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Employee Number
                 </label>
                 <input
@@ -219,7 +232,10 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="creditLimit" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="creditLimit"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Credit Limit
                 </label>
                 <input

@@ -20,8 +20,12 @@ const AddOfficeModal = ({ setShowModal, setReload }: any) => {
       city: cityRef.current.value,
       phone: phoneRef.current.value,
       addressLine1: addressLine1Ref.current.value,
-      addressLine2: addressLine2Ref.current.value == "" ? null : addressLine2Ref.current.value,
-      state: stateRef.current.value == "" ? null : addressLine2Ref.current.value,
+      addressLine2:
+        addressLine2Ref.current.value == ""
+          ? null
+          : addressLine2Ref.current.value,
+      state:
+        stateRef.current.value == "" ? null : addressLine2Ref.current.value,
       country: countryRef.current.value,
       postalCode: postalCodeRef.current.value,
       territory: territoryRef.current.value,
@@ -60,10 +64,7 @@ const AddOfficeModal = ({ setShowModal, setReload }: any) => {
                 />
               </div>
               <div className="mb-4">
-                <label
-                  htmlFor="city"
-                  className="font-semibold text-[1.15rem]"
-                >
+                <label htmlFor="city" className="font-semibold text-[1.15rem]">
                   City
                 </label>
                 <input
@@ -74,10 +75,7 @@ const AddOfficeModal = ({ setShowModal, setReload }: any) => {
                 />
               </div>
               <div className="block mb-4">
-                <label
-                  htmlFor="phone"
-                  className="font-semibold text-[1.15rem]"
-                >
+                <label htmlFor="phone" className="font-semibold text-[1.15rem]">
                   Phone
                 </label>
                 <input
@@ -166,7 +164,10 @@ const AddOfficeModal = ({ setShowModal, setReload }: any) => {
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="TERRITORY" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="TERRITORY"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Territory
                 </label>
                 <input

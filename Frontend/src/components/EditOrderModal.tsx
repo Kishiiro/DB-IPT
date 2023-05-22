@@ -2,8 +2,7 @@ import { useRef } from "react";
 import Modal from "./modal";
 import Axios from "axios";
 
-const EditOrderModal = ({ setShowEditModal, setReload, editOrder, }: any) => {
-
+const EditOrderModal = ({ setShowEditModal, setReload, editOrder }: any) => {
   const orderNumberRef = useRef<any>("");
   const orderDateRef = useRef<any>("");
   const requiredDateRef = useRef<any>("");
@@ -12,24 +11,23 @@ const EditOrderModal = ({ setShowEditModal, setReload, editOrder, }: any) => {
   const commentsRef = useRef<any>(null);
   const customerNumberRef = useRef<any>("");
 
-
   const submitHandler = async (e: any) => {
     e.preventDefault();
     const data = {
       orderNumber: orderNumberRef.current.value,
       orderDate: orderDateRef.current.value,
       requiredDate: requiredDateRef.current.value,
-      shippedDate: shippedDateRef.current.value == "" ? null : shippedDateRef.current.value,
+      shippedDate:
+        shippedDateRef.current.value == ""
+          ? null
+          : shippedDateRef.current.value,
       status: statusRef.current.value,
-      comments: commentsRef.current.value == "" ? null : commentsRef.current.value,
+      comments:
+        commentsRef.current.value == "" ? null : commentsRef.current.value,
       customerNumber: customerNumberRef.current.value,
-
     };
 
-    const response = await Axios.put(
-        `/orders/${editOrder.orderNumber}`,
-        data
-    );
+    const response = await Axios.put(`/orders/${editOrder.orderNumber}`, data);
     setReload((prev: any) => prev + 1);
     setShowEditModal(false);
     console.log(response.data);

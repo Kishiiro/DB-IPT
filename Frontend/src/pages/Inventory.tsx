@@ -5,7 +5,6 @@ import Axios from "axios";
 import AddModal from "../components/addmodal";
 import EditModal from "../components/editmodal";
 
-
 const Inventory = () => {
   const [inventories, setCustomer] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -45,7 +44,9 @@ const Inventory = () => {
         />
       )}
       <div className="bg-blue-500 w-full h-14 p-8 items-center flex">
-        <h1 className="text-white font-bold text-3xl">Inventory and Return Management</h1>
+        <h1 className="text-white font-bold text-3xl">
+          Inventory and Return Management
+        </h1>
       </div>
       <div className="container md:mx-auto mt-8 mb-6">
         <div className=" text-right mb-6">
@@ -56,11 +57,11 @@ const Inventory = () => {
             + Add
           </button>
           <button
-          onClick={() => navigate("/")}
-          className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
-        >
-          Back
-        </button>
+            onClick={() => navigate("/")}
+            className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+          >
+            Back
+          </button>
         </div>
         <table
           cellPadding={10}
@@ -74,50 +75,49 @@ const Inventory = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody className = "h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
+          <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
             {inventories.map((inventory: any, index: number) => (
               <>
-              <tr key={inventory.productCode}>
-                <td>{inventory.productCode}</td>
-                <td>{inventory.quantityInStock}</td>
-                <td>{inventory.officeCode}</td>
-                <td>
-                  <button
-                    onClick={async () => {
-                      setEditUser({
-                        productCode: inventory.productCode,
-                        quantityInStock: inventory.quantityInStock,
-                        officeCode: inventory.officeCode
-                      });
-                      setShowEditModal(true);
-                    }}
-                    className="m-6 bg-blue-400 hover:bg-blue-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
-                  >
-                    &#9998;
-                  </button>
-                  <button
-                    onClick={async () => {
-                      try {
-                        var result = confirm("Want to delete?");
-                        if (result) {
-
-                          const response = await Axios.delete(
-                            `invetories/${inventory.productCode}`
-                          );
-                          console.log(response.data);
-                          setReload((prev) => prev + 1);
+                <tr key={inventory.productCode}>
+                  <td>{inventory.productCode}</td>
+                  <td>{inventory.quantityInStock}</td>
+                  <td>{inventory.officeCode}</td>
+                  <td>
+                    <button
+                      onClick={async () => {
+                        setEditUser({
+                          productCode: inventory.productCode,
+                          quantityInStock: inventory.quantityInStock,
+                          officeCode: inventory.officeCode,
+                        });
+                        setShowEditModal(true);
+                      }}
+                      className="m-6 bg-blue-400 hover:bg-blue-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
+                    >
+                      &#9998;
+                    </button>
+                    <button
+                      onClick={async () => {
+                        try {
+                          var result = confirm("Want to delete?");
+                          if (result) {
+                            const response = await Axios.delete(
+                              `invetories/${inventory.productCode}`
+                            );
+                            console.log(response.data);
+                            setReload((prev) => prev + 1);
+                          }
+                        } catch (e) {
+                          console.log(e);
                         }
-                      } catch (e) {
-                        console.log(e);
-                      }
-                    }}
-                    className="bg-red-400 hover:bg-red-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
-                  >
-                    &times;
-                  </button>
-                </td>
-              </tr>
-              {index !== inventories.length - 1 && (
+                      }}
+                      className="bg-red-400 hover:bg-red-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
+                    >
+                      &times;
+                    </button>
+                  </td>
+                </tr>
+                {index !== inventories.length - 1 && (
                   <tr className="spacing-row">
                     <td colSpan={4} className="h-4">
                       <hr className="border-gray-400" />

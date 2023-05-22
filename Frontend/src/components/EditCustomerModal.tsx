@@ -2,43 +2,56 @@ import { useRef } from "react";
 import Modal from "./modal";
 import Axios from "axios";
 
-const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) => {
-
-    const customerNumber  = useRef<any>("");
-    const customerName = useRef<any>("");
-    const contactLastNameRef = useRef<any>("");
-    const contactFirstNameRef = useRef<any>("");
-    const phoneRef = useRef<any>("");
-    const addressLine1Ref = useRef<any>("");
-    const addressLine2Ref = useRef<any>(null);
-    const cityRef = useRef<any>("");
-    const stateRef = useRef<any>(null);
-    const postalCodeRef = useRef<any>(null);
-    const countryRef = useRef<any>("");
-    const salesRepEmployeeNumberRef  = useRef<any>(null);
-    const creditLimitRef   = useRef<any>(null);
+const EditCustomerModal = ({
+  setShowEditModal,
+  setReload,
+  editCustomer,
+}: any) => {
+  const customerNumber = useRef<any>("");
+  const customerName = useRef<any>("");
+  const contactLastNameRef = useRef<any>("");
+  const contactFirstNameRef = useRef<any>("");
+  const phoneRef = useRef<any>("");
+  const addressLine1Ref = useRef<any>("");
+  const addressLine2Ref = useRef<any>(null);
+  const cityRef = useRef<any>("");
+  const stateRef = useRef<any>(null);
+  const postalCodeRef = useRef<any>(null);
+  const countryRef = useRef<any>("");
+  const salesRepEmployeeNumberRef = useRef<any>(null);
+  const creditLimitRef = useRef<any>(null);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
     const data = {
-        customerNumber: customerNumber.current.value,
-        customerName: customerName.current.value,
-        contactLastName: contactLastNameRef.current.value,
-        contactFirstName: contactFirstNameRef.current.value,
-        phone: phoneRef.current.value,
-        addressLine1: addressLine1Ref.current.value,
-        addressLine2: addressLine2Ref.current.value == "" ? null : addressLine2Ref.current.value,
-        city: cityRef.current.value,
-        state: stateRef.current.value == "" ? null : stateRef.current.value,
-        postalCode: postalCodeRef.current.value == "" ? null : postalCodeRef.current.value,
-        country: countryRef.current.value,
-        salesRepEmployeeNumber: salesRepEmployeeNumberRef.current.value == "" ? null : salesRepEmployeeNumberRef.current.value,
-        creditLimit: creditLimitRef.current.value == "" ? null : creditLimitRef.current.value,
+      customerNumber: customerNumber.current.value,
+      customerName: customerName.current.value,
+      contactLastName: contactLastNameRef.current.value,
+      contactFirstName: contactFirstNameRef.current.value,
+      phone: phoneRef.current.value,
+      addressLine1: addressLine1Ref.current.value,
+      addressLine2:
+        addressLine2Ref.current.value == ""
+          ? null
+          : addressLine2Ref.current.value,
+      city: cityRef.current.value,
+      state: stateRef.current.value == "" ? null : stateRef.current.value,
+      postalCode:
+        postalCodeRef.current.value == "" ? null : postalCodeRef.current.value,
+      country: countryRef.current.value,
+      salesRepEmployeeNumber:
+        salesRepEmployeeNumberRef.current.value == ""
+          ? null
+          : salesRepEmployeeNumberRef.current.value,
+      creditLimit:
+        creditLimitRef.current.value == ""
+          ? null
+          : creditLimitRef.current.value,
     };
 
     const response = await Axios.put(
-        `/customers/${editCustomer.customerNumber}`,
-        data
+      `/customers/${editCustomer.customerNumber}`,
+      data
     );
     setReload((prev: any) => prev + 1);
     setShowEditModal(false);
@@ -171,10 +184,7 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
                 </div>
               </div>
               <div className="block mb-4">
-                <label
-                  htmlFor="city"
-                  className="font-semibold text-[1.15rem]"
-                >
+                <label htmlFor="city" className="font-semibold text-[1.15rem]">
                   City
                 </label>
                 <input
@@ -198,7 +208,10 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="postalCode" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="postalCode"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Postal Code
                 </label>
                 <input
@@ -210,7 +223,10 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="country" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="country"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Country
                 </label>
                 <input
@@ -222,7 +238,10 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="salesRepEmployeeNumber" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="salesRepEmployeeNumber"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Employee Number
                 </label>
                 <input
@@ -234,7 +253,10 @@ const EditCustomerModal = ({ setShowEditModal, setReload, editCustomer, }: any) 
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="creditLimit" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="creditLimit"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Credit Limit
                 </label>
                 <input

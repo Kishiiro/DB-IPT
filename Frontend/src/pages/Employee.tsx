@@ -1,11 +1,10 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import AddModal from "../components/addmodal";
 import EditModal from "../components/editmodal";
 
 const employees = () => {
-
   const [employees, setEmployees] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -47,30 +46,28 @@ const employees = () => {
         <h1 className="text-white font-bold text-2xl">Employees Management</h1>
       </div>
       <div className="container mx-auto mt-6 mb-6 ">
-
-          <div className=" text-right mb-6">
+        <div className=" text-right mb-6">
           <div className=" text-left mb-6">
-          <button
-            onClick={() => navigate("/")}
-            className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
-          >
-            Homepage
-          </button>
-             <button
-            onClick={() => navigate("/office")}
-            className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
-          >
-            Go to Office
-          </button>
-          </div>
             <button
-              onClick={() => setShowModal(true)}
-              className="bg-green-500 hover:bg-green-600 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+              onClick={() => navigate("/")}
+              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
             >
-              + Add
+              Homepage
+            </button>
+            <button
+              onClick={() => navigate("/office")}
+              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
+            >
+              Go to Office
             </button>
           </div>
-    
+          <button
+            onClick={() => setShowModal(true)}
+            className="bg-green-500 hover:bg-green-600 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+          >
+            + Add
+          </button>
+        </div>
 
         <table
           cellPadding={10}
@@ -117,7 +114,6 @@ const employees = () => {
                     }}
                     className="mr-4 bg-blue-400 hover:bg-blue-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
                   >
-
                     &#9998;
                   </button>
                   <button
@@ -125,7 +121,6 @@ const employees = () => {
                       try {
                         var result = confirm("Want to delete?");
                         if (result) {
-
                           const response = await Axios.delete(
                             `employees/${employees.employeeNumber}`
                           );

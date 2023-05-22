@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
@@ -6,7 +6,6 @@ import AddOrderModal from "../components/AddOrderModal";
 import EditOrderModal from "../components/EditOrderModal";
 
 const orders = () => {
-
   const [orders, setorderss] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -56,13 +55,12 @@ const orders = () => {
             + Add
           </button>
           <button
-          onClick={() => navigate("/")}
-          className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
-        >
-          Back
-        </button>
+            onClick={() => navigate("/")}
+            className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+          >
+            Back
+          </button>
         </div>
-   
 
         <table
           cellPadding={10}
@@ -106,7 +104,6 @@ const orders = () => {
                     }}
                     className="mr-4 bg-blue-400 hover:bg-blue-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
                   >
-
                     &#9998;
                   </button>
                   <button
@@ -114,7 +111,6 @@ const orders = () => {
                       try {
                         var result = confirm("Want to delete?");
                         if (result) {
-
                           const response = await Axios.delete(
                             `orders/${orders.orderNumber}`
                           );

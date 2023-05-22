@@ -13,7 +13,10 @@ const AddProductLineModal = ({ setShowModal, setReload }: any) => {
     const data = {
       productLine: productLineRef.current.value,
       textDescription: textDescriptionRef.current.value,
-      htmlDescription: htmlDescriptionRef.current.value == "" ? null : htmlDescriptionRef.current.value,
+      htmlDescription:
+        htmlDescriptionRef.current.value == ""
+          ? null
+          : htmlDescriptionRef.current.value,
       image: imageRef.current.value == "" ? null : imageRef.current.value,
     };
 
@@ -78,10 +81,7 @@ const AddProductLineModal = ({ setShowModal, setReload }: any) => {
                 />
               </div>
               <div className="mb-[1rem]">
-                <label
-                  htmlFor="image"
-                  className="font-semibold text-[1.15rem]"
-                >
+                <label htmlFor="image" className="font-semibold text-[1.15rem]">
                   Image
                 </label>
                 <input
@@ -91,7 +91,7 @@ const AddProductLineModal = ({ setShowModal, setReload }: any) => {
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
                 />
               </div>
-                       </div>
+            </div>
             <div className="text-center">
               <button
                 type="submit"

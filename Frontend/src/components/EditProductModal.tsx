@@ -7,7 +7,6 @@ const EditProductModal = ({
   setReload,
   editProduct,
 }: any) => {
-  
   const productCodeRef = useRef<any>("");
   const productNameRef = useRef<any>("");
   const productLineRef = useRef<any>("");

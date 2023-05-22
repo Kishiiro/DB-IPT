@@ -2,8 +2,7 @@ import { useRef } from "react";
 import Modal from "./modal";
 import Axios from "axios";
 
-const EditOfficeModal = ({ setShowEditModal, setReload, editOffice, }: any) => {
-
+const EditOfficeModal = ({ setShowEditModal, setReload, editOffice }: any) => {
   const officeCodeRef = useRef<any>("");
   const cityRef = useRef<any>("");
   const phoneRef = useRef<any>("");
@@ -21,17 +20,17 @@ const EditOfficeModal = ({ setShowEditModal, setReload, editOffice, }: any) => {
       city: cityRef.current.value,
       phone: phoneRef.current.value,
       addressLine1: addressLine1Ref.current.value,
-      addressLine2: addressLine2Ref.current.value == "" ? null : addressLine2Ref.current.value,
+      addressLine2:
+        addressLine2Ref.current.value == ""
+          ? null
+          : addressLine2Ref.current.value,
       state: stateRef.current.value == "" ? null : stateRef.current.value,
       country: countryRef.current.value,
       postalCode: postalCodeRef.current.value,
       territory: territoryRef.current.value,
     };
 
-    const response = await Axios.put(
-        `/offices/${editOffice.officeCode}`,
-        data
-    );
+    const response = await Axios.put(`/offices/${editOffice.officeCode}`, data);
     setReload((prev: any) => prev + 1);
     setShowEditModal(false);
     console.log(response.data);
@@ -65,10 +64,7 @@ const EditOfficeModal = ({ setShowEditModal, setReload, editOffice, }: any) => {
                 />
               </div>
               <div className="mb-4">
-                <label
-                  htmlFor="city"
-                  className="font-semibold text-[1.15rem]"
-                >
+                <label htmlFor="city" className="font-semibold text-[1.15rem]">
                   City
                 </label>
                 <input
@@ -80,10 +76,7 @@ const EditOfficeModal = ({ setShowEditModal, setReload, editOffice, }: any) => {
                 />
               </div>
               <div className="block mb-4">
-                <label
-                  htmlFor="phone"
-                  className="font-semibold text-[1.15rem]"
-                >
+                <label htmlFor="phone" className="font-semibold text-[1.15rem]">
                   Phone
                 </label>
                 <input
@@ -178,7 +171,10 @@ const EditOfficeModal = ({ setShowEditModal, setReload, editOffice, }: any) => {
                 />
               </div>
               <div className="block mb-4">
-                <label htmlFor="TERRITORY" className="font-semibold text-[1.15rem]">
+                <label
+                  htmlFor="TERRITORY"
+                  className="font-semibold text-[1.15rem]"
+                >
                   Territory
                 </label>
                 <input

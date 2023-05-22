@@ -58,8 +58,8 @@ function createSchema(req, res, next) {
   const schema = Joi.object({
     productLine: Joi.string().required(),
     textDescription: Joi.string().allow(null).required(),
-    htmlDescription: Joi.string().allow(null).required(),
-    image: Joi.string().allow(null).required()
+    htmlDescription: Joi.string().allow(null),
+    image: Joi.string().allow(null)
   });
   validateRequest(req, next, schema);
 }
@@ -68,8 +68,8 @@ function updateSchema(req, res, next) {
   const schema = Joi.object({
     productLine: Joi.string().required(),
     textDescription: Joi.string().allow(null).required(),
-    htmlDescription: Joi.string().allow(null).required(),
-    image: Joi.string().allow(null).required()
+    htmlDescription: Joi.string().allow(null),
+    image: Joi.string().allow(null)
   });
   validateRequest(req, next, schema);
 }

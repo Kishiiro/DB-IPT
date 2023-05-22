@@ -55,11 +55,11 @@ const Customer = () => {
             + Add
           </button>
           <button
-          onClick={() => navigate("/")}
-          className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
-        >
-          Back
-        </button>
+            onClick={() => navigate("/")}
+            className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+          >
+            Back
+          </button>
         </div>
         <table
           cellPadding={10}
@@ -86,67 +86,67 @@ const Customer = () => {
           <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
             {customers.map((customer: any, index: number) => (
               <>
-              <tr key={customer.customerCode}>
-                <td>{customer.customerNumber}</td>
-                <td>{customer.customerName}</td>
-                <td>{customer.contactLastName}</td>
-                <td>{customer.contactFirstName}</td>
-                <td>{customer.phone}</td>
-                <td>{customer.addressLine1}</td>
-                <td>{customer.addressLine2}</td>
-                <td>{customer.city}</td>
-                <td>{customer.state}</td>
-                <td>{customer.postalCode}</td>
-                <td>{customer.country}</td>
-                <td>{customer.salesRepEmployeeNumber}</td> 
-                <td>{customer.creditLimit}</td> 
-                <td>
-                  <button
-                    onClick={async () => {
-                      setEditCustomer({
-                        customerNumber: customer.customerNumber,
-                        customerName: customer.customerName,
-                        contactLastName: customer.contactLastName,
-                        contactFirstName: customer.contactFirstName,
-                        phone: customer.phone,
-                        addressLine1: customer.addressLine1,
-                        addressLine2: customer.addressLine2,
-                        city: customer.city,
-                        state: customer.state,
-                        postalCode: customer.postalCode,
-                        country: customer.country,
-                        salesRepEmployeeNumber: customer.salesRepEmployeeNumber,
-                        creditLimit: customer.creditLimit,
-                      });
-                      setShowEditModal(true);
-                    }}
-                    className="m-6 bg-blue-400 hover:bg-blue-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
-                  >
-                    &#9998;
-                  </button>
-                  <button
-                    onClick={async () => {
-                      try {
-                        var result = confirm("Want to delete?");
-                        if (result) {
-
-                          const response = await Axios.delete(
-                            `customers/${customer.customerNumber}`
-                          );
-                          console.log(response.data);
-                          setReload((prev) => prev + 1);
+                <tr key={customer.customerCode}>
+                  <td>{customer.customerNumber}</td>
+                  <td>{customer.customerName}</td>
+                  <td>{customer.contactLastName}</td>
+                  <td>{customer.contactFirstName}</td>
+                  <td>{customer.phone}</td>
+                  <td>{customer.addressLine1}</td>
+                  <td>{customer.addressLine2}</td>
+                  <td>{customer.city}</td>
+                  <td>{customer.state}</td>
+                  <td>{customer.postalCode}</td>
+                  <td>{customer.country}</td>
+                  <td>{customer.salesRepEmployeeNumber}</td>
+                  <td>{customer.creditLimit}</td>
+                  <td>
+                    <button
+                      onClick={async () => {
+                        setEditCustomer({
+                          customerNumber: customer.customerNumber,
+                          customerName: customer.customerName,
+                          contactLastName: customer.contactLastName,
+                          contactFirstName: customer.contactFirstName,
+                          phone: customer.phone,
+                          addressLine1: customer.addressLine1,
+                          addressLine2: customer.addressLine2,
+                          city: customer.city,
+                          state: customer.state,
+                          postalCode: customer.postalCode,
+                          country: customer.country,
+                          salesRepEmployeeNumber:
+                            customer.salesRepEmployeeNumber,
+                          creditLimit: customer.creditLimit,
+                        });
+                        setShowEditModal(true);
+                      }}
+                      className="m-6 bg-blue-400 hover:bg-blue-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
+                    >
+                      &#9998;
+                    </button>
+                    <button
+                      onClick={async () => {
+                        try {
+                          var result = confirm("Want to delete?");
+                          if (result) {
+                            const response = await Axios.delete(
+                              `customers/${customer.customerNumber}`
+                            );
+                            console.log(response.data);
+                            setReload((prev) => prev + 1);
+                          }
+                        } catch (e) {
+                          console.log(e);
                         }
-                      } catch (e) {
-                        console.log(e);
-                      }
-                    }}
-                    className="bg-red-400 hover:bg-red-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
-                  >
-                    &times;
-                  </button>
-                </td>
-              </tr>
-              {index !== customers.length - 1 && (
+                      }}
+                      className="bg-red-400 hover:bg-red-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
+                    >
+                      &times;
+                    </button>
+                  </td>
+                </tr>
+                {index !== customers.length - 1 && (
                   <tr className="spacing-row">
                     <td colSpan={14} className="h-4">
                       <hr className="border-gray-400" />

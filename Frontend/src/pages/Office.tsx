@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
@@ -6,7 +6,6 @@ import AddOfficeModal from "../components/AddOfficeModal";
 import EditOfficeModal from "../components/EditOfficeModal";
 
 const office = () => {
-
   const [office, setOffices] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -49,31 +48,28 @@ const office = () => {
       </div>
       <div className="container mx-auto mt-6 mb-6 ">
         <div className=" text-right mb-6">
-        <div className=" text-left mb-6">
-        <button
-          onClick={() => navigate("/")}
-          className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
-        >
-        Homepage
-        </button>
+          <div className=" text-left mb-6">
+            <button
+              onClick={() => navigate("/")}
+              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+            >
+              Homepage
+            </button>
 
-        <button
-          onClick={() => navigate("/employee")}
-          className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
-        >
-          Go to Employee
-        </button>
-
-        </div>
+            <button
+              onClick={() => navigate("/employee")}
+              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
+            >
+              Go to Employee
+            </button>
+          </div>
           <button
             onClick={() => setShowModal(true)}
             className="bg-green-500 hover:bg-green-600 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
           >
             + Add
           </button>
-
         </div>
-   
 
         <table
           cellPadding={10}
@@ -123,7 +119,6 @@ const office = () => {
                     }}
                     className="mr-4 bg-blue-400 hover:bg-blue-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
                   >
-
                     &#9998;
                   </button>
                   <button
@@ -131,7 +126,6 @@ const office = () => {
                       try {
                         var result = confirm("Want to delete?");
                         if (result) {
-
                           const response = await Axios.delete(
                             `offices/${office.officeCode}`
                           );

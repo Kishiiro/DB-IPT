@@ -22,7 +22,10 @@ const EditModal = ({ setReload, setShowEditModal, editUser }: any) => {
       extension: extensionRef.current.value,
       email: emailRef.current.value,
       officeCode: officeCodeRef.current.value,
-      reportsTo: reportsToRef.current.value == "" ? null : Number(reportsToRef.current.value),
+      reportsTo:
+        reportsToRef.current.value == ""
+          ? null
+          : Number(reportsToRef.current.value),
       jobTitle: jobTitleRef.current.value,
     };
 
