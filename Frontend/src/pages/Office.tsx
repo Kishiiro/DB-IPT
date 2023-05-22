@@ -121,7 +121,7 @@ const office = () => {
                   >
                     &#9998;
                   </button>
-                  <button
+                  {/* <button
                     onClick={async () => {
                       try {
                         var result = confirm("Want to delete?");
@@ -139,7 +139,7 @@ const office = () => {
                     className="bg-red-400 hover:bg-red-600 duration-300 transition-all ease-in-out text-white font-bold py-2 px-4 rounded"
                   >
                     &times;
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             ))}
