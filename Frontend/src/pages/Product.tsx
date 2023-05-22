@@ -48,18 +48,27 @@ const Product = () => {
       </div>
       <div className="container md:mx-auto mt-8 mb-6">
         <div className=" text-right mb-6">
+        <div className=" text-left mb-6">
+            <button
+              onClick={() => navigate("/")}
+              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+            >
+              Homepage
+            </button>
+            <button
+              onClick={() => navigate("/productline")}
+              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
+            >
+              Go to Product Line
+            </button>
+          </div>
           <button
             onClick={() => setShowModal(true)}
             className="bg-green-500 hover:bg-green-600 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
           >
             + Add
           </button>
-          <button
-            onClick={() => navigate("/")}
-            className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
-          >
-            Back
-          </button>
+
         </div>
         <table
           cellPadding={10}

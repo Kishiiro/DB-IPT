@@ -202,7 +202,6 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
                 />
               </div>
-<<<<<<< HEAD
 
               <div className="block mb-4">
                 <label
@@ -210,13 +209,6 @@ const AddCustomerModal = ({ setShowModal, setReload }: any) => {
                   className="font-semibold text-[1.15rem]"
                 >
                   country
-=======
-              </div>
-              <div className="flex items-center gap-4">
-              <div className="block mb-4">
-                <label htmlFor="country" className="font-semibold text-[1.15rem]">
-                  Country
->>>>>>> d7c9f21921766cd86fd7fc9d69f4e3be70eeba88
                 </label>
                 <input
                   ref={countryRef}
