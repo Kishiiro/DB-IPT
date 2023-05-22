@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
-import AddModal from "../components/addmodal";
-import EditModal from "../components/editmodal";
+import AddInventoryModal from "../components/AddInventoryModal";
+import EditInventoryModal from "../components/EditInventoryModal";
 
 const Inventory = () => {
   const [inventories, setCustomer] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editUser, setEditUser] = useState<any>({});
+  const [editIventory, setEditInventory] = useState<any>({});
   const [reload, setReload] = useState(0);
   const navigate = useNavigate();
 
@@ -34,17 +34,17 @@ const Inventory = () => {
   return (
     <>
       {showModal && (
-        <AddModal setReload={setReload} setShowModal={setShowModal} />
+        <AddInventoryModal setReload={setReload} setShowModal={setShowModal} />
       )}
       {showEditModal && (
-        <EditModal
-          editUser={editUser}
+        <EditInventoryModal
+          editUser={editIventory}
           setReload={setReload}
           setShowEditModal={setShowEditModal}
         />
       )}
-      <div className="bg-blue-500 w-full h-14 p-8 items-center flex">
-        <h1 className="text-white font-bold text-3xl">
+      <div className="bg-cyan-300 w-full h-15 p-8 items-center flex">
+        <h1 className="text-white font-bold text-4xl">
           Inventory and Return Management
         </h1>
       </div>
@@ -67,7 +67,7 @@ const Inventory = () => {
           cellPadding={10}
           className=" text-center h-auto w-full border  border-black"
         >
-          <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
+          <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-cyan-200 to-transparent opacity-20 dark:opacity-100">
             <tr>
               <th>Product Code</th>
               <th>Quantity In Stock</th>
@@ -75,7 +75,7 @@ const Inventory = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
+          <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-sky-100 to-transparent opacity-20 dark:opacity-100">
             {inventories.map((inventory: any, index: number) => (
               <>
                 <tr key={inventory.productCode}>
@@ -85,7 +85,7 @@ const Inventory = () => {
                   <td>
                     <button
                       onClick={async () => {
-                        setEditUser({
+                        setEditInventory({
                           productCode: inventory.productCode,
                           quantityInStock: inventory.quantityInStock,
                           officeCode: inventory.officeCode,

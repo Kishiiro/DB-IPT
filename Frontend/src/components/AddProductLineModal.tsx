@@ -31,7 +31,7 @@ const AddProductLineModal = ({ setShowModal, setReload }: any) => {
       onClick={() => setShowModal(false)}
       className="flex flex-col justify-center items-center bg-white"
     >
-      <h1 className="font-bold text-[2rem] mb-[1.5rem] text-blue-500">
+      <h1 className="font-bold text-[2rem] mb-[1.5rem] text-sky-400">
         Add Product Line
       </h1>
       <form onSubmit={submitHandler}>
@@ -95,7 +95,7 @@ const AddProductLineModal = ({ setShowModal, setReload }: any) => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-blue-500 mt-[1.5rem] text-white h-[2.8rem] rounded w-[20rem] font-semibold transition-all duration-[0.3s] ease-in-out hover:bg-blue-600"
+                className="bg-sky-400 mt-[1.5rem] text-white h-[2.8rem] rounded w-[20rem] font-semibold transition-all duration-[0.3s] ease-in-out hover:bg-blue-600"
               >
                 Add Product Line
               </button>

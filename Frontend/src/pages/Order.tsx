@@ -43,8 +43,8 @@ const orders = () => {
           setShowEditModal={setShowEditModal}
         />
       )}
-      <div className="bg-blue-500 w-full h-14 p-8 items-center flex">
-        <h1 className="text-white font-bold text-2xl">Orders</h1>
+      <div className="bg-cyan-300 w-full h-15 p-8 items-center flex">
+        <h1 className="text-white font-bold text-4xl">Orders</h1>
       </div>
       <div className="container mx-auto mt-6 mb-6 ">
         <div className=" text-right mb-6">
@@ -66,28 +66,28 @@ const orders = () => {
           cellPadding={10}
           className=" text-center h-auto w-full border  border-black"
         >
-          <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
+          <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-cyan-200 to-transparent opacity-20 dark:opacity-100">
             <tr>
-              <th>Order Number</th>
-              <th>Order Date</th>
-              <th>Required Date</th>
-              <th>Shipped Date</th>
-              <th>Status</th>
-              <th>Comments</th>
-              <th>Customer Number</th>
-              <th>Action</th>
+              <th className="py-3 px-10">Order Number</th>
+              <th className="py-3 px-10">Order Date</th>
+              <th className="py-3 px-10">Required Date</th>
+              <th className="py-3 px-10">Shipped Date</th>
+              <th className="py-3 px-10">Status</th>
+              <th className="py-3 px-10">Comments</th>
+              <th className="py-3 px-10">Customer Number</th>
+              <th className="py-3 px-10">Action</th>
             </tr>
           </thead>
-          <tbody className="h-[250px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
+          <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-sky-100 to-transparent opacity-20 dark:opacity-100">
             {orders.map((orders: any) => (
               <tr key={orders.orderNumber}>
-                <td>{orders.orderNumber}</td>
-                <td>{orders.orderDate}</td>
-                <td>{orders.requiredDate}</td>
-                <td>{orders.shippedDate}</td>
-                <td>{orders.status}</td>
-                <td>{orders.comments}</td>
-                <td>{orders.customerNumber}</td>
+                <td className="py-3 px-6">{orders.orderNumber}</td>
+                <td className="py-3 px-6">{orders.orderDate}</td>
+                <td className="py-3 px-6">{orders.requiredDate}</td>
+                <td className="py-3 px-6">{orders.shippedDate}</td>
+                <td className="py-3 px-6">{orders.status}</td>
+                <td className="py-3 px-6">{orders.comments}</td>
+                <td className="py-3 px-6">{orders.customerNumber}</td>
                 <td>
                   <button
                     onClick={async () => {

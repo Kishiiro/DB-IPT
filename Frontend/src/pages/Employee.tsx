@@ -42,8 +42,8 @@ const employees = () => {
           setShowEditModal={setShowEditModal}
         />
       )}
-      <div className="bg-blue-500 w-full h-14 p-8 items-center flex">
-        <h1 className="text-white font-bold text-2xl">Employees Management</h1>
+      <div className="bg-cyan-300 w-full h-15 p-8 items-center flex">
+        <h1 className="text-white font-bold text-4xl">Employees Management</h1>
       </div>
       <div className="container mx-auto mt-6 mb-6 ">
         <div className=" text-right mb-6">
@@ -73,7 +73,7 @@ const employees = () => {
           cellPadding={10}
           className=" text-center h-auto w-full border  border-black"
         >
-          <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
+          <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-cyan-200 to-transparent opacity-20 dark:opacity-100">
             <tr>
               <th>Employee Number</th>
               <th>First Name</th>
@@ -86,7 +86,7 @@ const employees = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody className="h-[250px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-20 dark:opacity-100">
+          <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-sky-100 to-transparent opacity-20 dark:opacity-100">
             {employees.map((employees: any) => (
               <tr key={employees.employeeNumber}>
                 <td>{employees.employeeNumber}</td>
