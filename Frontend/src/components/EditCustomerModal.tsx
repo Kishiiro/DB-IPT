@@ -222,6 +222,8 @@ const EditCustomerModal = ({
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
                 />
               </div>
+              </div>
+              <div className="flex items-center gap-4">
               <div className="block mb-4">
                 <label
                   htmlFor="country"
