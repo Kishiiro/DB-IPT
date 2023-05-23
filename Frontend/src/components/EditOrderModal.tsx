@@ -17,13 +17,9 @@ const EditOrderModal = ({ setShowEditModal, setReload, editOrder }: any) => {
       orderNumber: orderNumberRef.current.value,
       orderDate: orderDateRef.current.value,
       requiredDate: requiredDateRef.current.value,
-      shippedDate:
-        shippedDateRef.current.value == ""
-          ? null
-          : shippedDateRef.current.value,
+      shippedDate: shippedDateRef.current.value == "" ? null : shippedDateRef.current.value,
       status: statusRef.current.value,
-      comments:
-        commentsRef.current.value == "" ? null : commentsRef.current.value,
+      comments: commentsRef.current.value == "" ? null : commentsRef.current.value,
       customerNumber: customerNumberRef.current.value,
     };
 
@@ -105,6 +101,8 @@ const EditOrderModal = ({ setShowEditModal, setReload, editOrder }: any) => {
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
                 />
               </div>
+              </div>
+              <div className="flex items-center gap-4">
               <div className="flex items-center gap-4">
                 <div className="mb-[1rem]">
                   <label
@@ -122,8 +120,6 @@ const EditOrderModal = ({ setShowEditModal, setReload, editOrder }: any) => {
                   />
                 </div>
               </div>
-            </div>
-            <div className="flex items-center gap-4">
               <div className="flex items-center gap-4">
                 <div className="mb-[1rem]">
                   <label
@@ -158,13 +154,13 @@ const EditOrderModal = ({ setShowEditModal, setReload, editOrder }: any) => {
                   />
                 </div>
               </div>
-            </div>
+              </div>
             <div className="text-center">
               <button
                 type="submit"
                 className="bg-sky-400 mt-[1.5rem] text-white h-[2.8rem] rounded w-[20rem] font-semibold transition-all duration-[0.3s] ease-in-out hover:bg-blue-600"
               >
-                Update Office
+                Update Order
               </button>
             </div>
           </div>

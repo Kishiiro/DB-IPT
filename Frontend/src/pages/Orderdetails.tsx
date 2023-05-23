@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
-import AddOrderModal from "../components/AddOrderModal";
-import EditOrderModal from "../components/EditOrderModal";
+import AddOrderdetailsModal from "../components/AddOrderdetailsModal";
+import EditOrderdetailsModal from "../components/EditOrderdetailsModal";
 
-const orders = () => {
-  const [orders, setorderss] = useState([]);
+const orderdetails = () => {
+  const [orderdetails, setorderdetailss] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editOrder, setEditOrder] = useState<any>({});
+  const [editOrderdetails, setEditOrder] = useState<any>({});
   const [reload, setReload] = useState(0);
   const navigate = useNavigate();
 
@@ -17,10 +17,10 @@ const orders = () => {
     const ourRequest = Axios.CancelToken.source();
     const fetchPost = async () => {
       try {
-        const response = await Axios.get("/orders", {
+        const response = await Axios.get("/orderdetails", {
           cancelToken: ourRequest.token,
         });
-        setorderss(response.data);
+        setorderdetailss(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -34,21 +34,21 @@ const orders = () => {
   return (
     <>
       {showModal && (
-        <AddOrderModal setReload={setReload} setShowModal={setShowModal} />
+        <AddOrderdetailsModal setReload={setReload} setShowModal={setShowModal} />
       )}
       {showEditModal && (
-        <EditOrderModal
-          editOrder={editOrder}
+        <EditOrderdetailsModal
+          editOrderdetails={editOrderdetails}
           setReload={setReload}
           setShowEditModal={setShowEditModal}
         />
       )}
       <div className="bg-cyan-300 w-full h-15 p-8 items-center flex">
-        <h1 className="text-white font-bold text-4xl">Orders</h1>
+        <h1 className="text-white font-bold text-4xl">Order Details</h1>
       </div>
       <div className="container mx-auto mt-6 mb-6 ">
         <div className=" text-right mb-6">
-          <div className=" text-left mb-6">
+        <div className=" text-left mb-6">
           <button
               onClick={() => navigate("/")}
               className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
@@ -56,10 +56,10 @@ const orders = () => {
               Homepage
             </button>
             <button
-              onClick={() => navigate("/orderdetails")}
+              onClick={() => navigate("/order")}
               className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
             >
-              Go to Order Details
+              Go to Orders
             </button>
             </div>
           <button
@@ -77,36 +77,30 @@ const orders = () => {
           <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-cyan-200 to-transparent opacity-20 dark:opacity-100">
             <tr>
               <th className="py-3 px-10">Order Number</th>
-              <th className="py-3 px-10">Order Date</th>
-              <th className="py-3 px-10">Required Date</th>
-              <th className="py-3 px-10">Shipped Date</th>
-              <th className="py-3 px-10">Status</th>
-              <th className="py-3 px-10">Comments</th>
-              <th className="py-3 px-10">Customer Number</th>
+              <th className="py-3 px-10">Product Code</th>
+              <th className="py-3 px-10">Quantity Ordered</th>
+              <th className="py-3 px-10">Price Each</th>
+              <th className="py-3 px-10">Order Line Number</th>
               <th className="py-3 px-10">Action</th>
             </tr>
           </thead>
           <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-sky-100 to-transparent opacity-20 dark:opacity-100">
-            {orders.map((orders: any) => (
-              <tr key={orders.orderNumber}>
-                <td className="py-3 px-6">{orders.orderNumber}</td>
-                <td className="py-3 px-6">{orders.orderDate}</td>
-                <td className="py-3 px-6">{orders.requiredDate}</td>
-                <td className="py-3 px-6">{orders.shippedDate}</td>
-                <td className="py-3 px-6">{orders.status}</td>
-                <td className="py-3 px-6">{orders.comments}</td>
-                <td className="py-3 px-6">{orders.customerNumber}</td>
+            {orderdetails.map((orderdetails: any) => (
+              <tr key={orderdetails.orderNumber}>
+                <td className="py-3 px-6">{orderdetails.orderNumber}</td>
+                <td className="py-3 px-6">{orderdetails.productCode}</td>
+                <td className="py-3 px-6">{orderdetails.quantityOrdered}</td>
+                <td className="py-3 px-6">{orderdetails.priceEach}</td>
+                <td className="py-3 px-6">{orderdetails.orderLineNumber}</td>
                 <td>
                   <button
                     onClick={async () => {
                       setEditOrder({
-                        orderNumber: orders.orderNumber,
-                        orderDate: orders.orderDate,
-                        requiredDate: orders.requiredDate,
-                        shippedDate: orders.shippedDate,
-                        status: orders.status,
-                        comments: orders.comments,
-                        customerNumber: orders.customerNumber,
+                        orderNumber: orderdetails.orderNumber,
+                        productCode: orderdetails.productCode,
+                        quantityOrdered: orderdetails.quantityOrdered,
+                        priceEach: orderdetails.priceEach,
+                        orderLineNumber: orderdetails.orderLineNumber,
                       });
                       setShowEditModal(true);
                     }}
@@ -120,7 +114,7 @@ const orders = () => {
                         var result = confirm("Want to delete?");
                         if (result) {
                           const response = await Axios.delete(
-                            `orders/${orders.orderNumber}`
+                            `orderdetails/${orderdetails.orderNumber}`
                           );
                           console.log(response.data);
                           setReload((prev) => prev + 1);
@@ -143,4 +137,4 @@ const orders = () => {
   );
 };
 
-export default orders;
+export default orderdetails;
