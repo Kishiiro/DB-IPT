@@ -10,3 +10,6 @@
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
+body {
+  background: rgb(154, 208, 245);
+}

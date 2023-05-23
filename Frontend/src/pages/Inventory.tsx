@@ -45,7 +45,7 @@ const Inventory = () => {
       )}
       <div className="bg-cyan-300 w-full h-15 p-8 items-center flex">
         <h1 className="text-white font-bold text-4xl">
-          Inventory and Return Management
+          Inventory
         </h1>
       </div>
       <div className="container md:mx-auto mt-8 mb-6">

@@ -51,14 +51,14 @@ const office = () => {
           <div className=" text-left mb-6">
             <button
               onClick={() => navigate("/")}
-              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
+              className="bg-sky-400 hover:bg-red-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
             >
               Homepage
             </button>
 
             <button
               onClick={() => navigate("/employee")}
-              className="bg-red-500 hover:bg-neutral-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
+              className="bg-sky-400 hover:bg-red-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
             >
               Go to Employee
             </button>

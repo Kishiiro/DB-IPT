@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
-import AddProductModal from "../components/AddProductModal";
-import EditProductModal from "../components/EditProductModal";
+import AddPaymentModal from "../components/AddPaymentModal";
+import EditPaymentModal from "../components/EditPaymentModal";
 
-const Product = () => {
-  const [products, setProduct] = useState([]);
+const Payment = () => {
+  const [payments, setPayments] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editProduct, setEditProduct] = useState<any>({});
+  const [editIventory, setEditPayment] = useState<any>({});
   const [reload, setReload] = useState(0);
   const navigate = useNavigate();
 
@@ -17,10 +17,10 @@ const Product = () => {
     const ourRequest = Axios.CancelToken.source();
     const fetchPost = async () => {
       try {
-        const response = await Axios.get("/products", {
+        const response = await Axios.get("/payments", {
           cancelToken: ourRequest.token,
         });
-        setProduct(response.data);
+        setPayments(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -34,17 +34,19 @@ const Product = () => {
   return (
     <>
       {showModal && (
-        <AddProductModal setReload={setReload} setShowModal={setShowModal} />
+        <AddPaymentModal setReload={setReload} setShowModal={setShowModal} />
       )}
       {showEditModal && (
-        <EditProductModal
-          editProduct={editProduct}
+        <EditPaymentModal
+          editUser={editIventory}
           setReload={setReload}
           setShowEditModal={setShowEditModal}
         />
       )}
       <div className="bg-cyan-300 w-full h-15 p-8 items-center flex">
-        <h1 className="text-white font-bold text-4xl">Products</h1>
+        <h1 className="text-white font-bold text-4xl">
+          Payment
+        </h1>
       </div>
       <div className="container md:mx-auto mt-8 mb-6">
         <div className=" text-right mb-6">
@@ -56,19 +58,18 @@ const Product = () => {
               Homepage
             </button>
             <button
-              onClick={() => navigate("/productline")}
+              onClick={() => navigate("/customer")}
               className="bg-sky-400 hover:bg-red-500 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded ml-2"
             >
-              Go to Product Line
+              Go to Customer
             </button>
-          </div>
+          </div> 
           <button
             onClick={() => setShowModal(true)}
             className="bg-green-500 hover:bg-green-600 duration-300 transition-all ease-in-out text-white font-semibold py-2 px-4 rounded"
           >
             + Add
           </button>
-
         </div>
         <table
           cellPadding={10}
@@ -76,44 +77,30 @@ const Product = () => {
         >
           <thead className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-cyan-200 to-transparent opacity-20 dark:opacity-100">
             <tr>
-              <th className="py-2 px-4">Product Code</th>
-              <th className="py-2 px-4">Product Name </th>
-              <th className="py-2 px-4">Product Line</th>
-              <th className="py-2 px-4">Product Scale</th>
-              <th className="py-2 px-4">Product Vendor</th>
-              <th className="py-2 px-4">Product Description </th>
-              <th className="py-2 px-4">Quantity In Stock</th>
-              <th className="py-2 px-4">Buy Price</th>
-              <th className="py-2 px-4">MSRP</th>
+              <th>Customer Number</th>
+              <th>Check Number</th>
+              <th>Payment Date</th>
+              <th>Amount</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody className="h-[20px] min-h-[1em] w-px self-stretch bg-gradient-to-tr from-transparent via-sky-100 to-transparent opacity-20 dark:opacity-100">
-            {products.map((product: any, index: number) => (
+            {payments.map((payments: any, index: number) => (
               <>
-                <tr key={product.productCode}>
-                  <td>{product.productCode}</td>
-                  <td>{product.productName}</td>
-                  <td>{product.productLine}</td>
-                  <td>{product.productScale}</td>
-                  <td>{product.productVendor}</td>
-                  <td>{product.productDescription}</td>
-                  <td>{product.quantityInStock}</td>
-                  <td>{product.buyPrice}</td>
-                  <td>{product.MSRP}</td>
+                <tr key={payments.customerNumber}>
+                  <td>{payments.customerNumber}</td>
+                  <td>{payments.checkNumber}</td>
+                  <td>{payments.paymentDate}</td>
+                  <td>{payments.amount}</td>
                   <td>
                     <button
                       onClick={async () => {
-                        setEditProduct({
-                          productCode: product.productCode,
-                          productName: product.productName,
-                          productLine: product.productLine,
-                          productScale: product.productScale,
-                          productVendor: product.productVendor,
-                          productDescription: product.productDescription,
-                          quantityInStock: product.quantityInStock,
-                          buyPrice: product.buyPrice,
-                          MSRP: product.MSRP,
+                        setEditPayment({
+                          customerNumber: payments.customerNumber,
+                          checkNumber: payments.checkNumber,
+                          paymentDate: payments.paymentDate,
+                          amount: payments.amount,
+
                         });
                         setShowEditModal(true);
                       }}
@@ -127,7 +114,7 @@ const Product = () => {
                           var result = confirm("Want to delete?");
                           if (result) {
                             const response = await Axios.delete(
-                              `products/${product.productCode}`
+                              `invetories/${inventory.productCode}`
                             );
                             console.log(response.data);
                             setReload((prev) => prev + 1);
@@ -142,9 +129,9 @@ const Product = () => {
                     </button> */}
                   </td>
                 </tr>
-                {index !== products.length - 1 && (
+                {index !== payments.length - 1 && (
                   <tr className="spacing-row">
-                    <td colSpan={11} className="h-4">
+                    <td colSpan={4} className="h-4">
                       <hr className="border-gray-400" />
                     </td>
                   </tr>
@@ -157,5 +144,4 @@ const Product = () => {
     </>
   );
 };
-
-export default Product;
+export default Payment;
