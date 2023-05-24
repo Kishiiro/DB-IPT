@@ -12,6 +12,7 @@ function model(sequelize) {
     officeCode: { type: DataTypes.STRING, allowNull: false },
     reportsTo: { type: DataTypes.INTEGER, allowNull: true },
     jobTitle: { type: DataTypes.STRING, allowNull: false },
+    isDeleted: { type: DataTypes.BOOLEAN, allowNull: false },
   };
 
   const options = {

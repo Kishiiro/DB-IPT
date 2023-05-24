@@ -2,13 +2,16 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const bodyParser = require('body-parser');
 const errorHandler = require("_middleware/error-handler");
 const cookieParser = require("cookie-parser");
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 
 // api routes
 app.use("/employees", require("./employees/employee.controller"));
@@ -20,6 +23,8 @@ app.use("/payments", require("./payments/payment.controller"));
 app.use("/orders", require("./orders/orders.controller"));
 app.use("/orderdetails", require("./orderdetails/orderdetails.controller"));
 app.use("/inventories", require("./inventories/inventory.controller"));
+app.use("/users", require("./users/user.controller"));
+
 
 // app.use("/customers", require("./COandODM/customerorders.controller"));
 // app.use("/orderdetails", require("./COandODM/customerorders.controller"));

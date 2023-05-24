@@ -1,24 +1,27 @@
-const jwt = require("jsonwebtoken");
-const { secret } = require("config.json");
+const jwt = require('express-jwt');
+const { secret } = require('config.json');
+const db = require('_helpers/db');
 
 module.exports = authorize;
 
 function authorize(req, res, next) {
-  const token = req.cookies.token;
-  if (!token) {
-    return res
-      .status(401)
-      .json({ message: "Unauthorized" });
-  }
+    const token = req.cookies.token;
+    if (!token) {
+      return res
+        .status(401)
+        .json({ message: "Authenticate first to access this api" });
+    }
+  
+    // get user with id from token 'sub' (subject) property
+    // const user = await db.User.findByPk(req.user.sub);
+    const user = jwt.verify(token, secret);
+    console.log(user);
+            // check user still exists
+            if (!user)
+                return res.status(401).json({ message: 'Unauthorized' });
 
-  // get user with id from token 'sub' (subject) property
-  // const user = await db.User.findByPk(req.user.sub);
-  const employee = jwt.verify(token, secret);
+            // authorization successful
+            req.user = user;
+            next();
+        }
 
-  // check user still exists
-  if (!employee) return res.status(401).json({ message: "Unauthorized" });
-
-  // authorization successful
-  req.employee = employee;
-  next();
-}
