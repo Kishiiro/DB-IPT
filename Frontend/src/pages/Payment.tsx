@@ -131,7 +131,7 @@ const Payment = () => {
                 </tr>
                 {index !== payments.length - 1 && (
                   <tr className="spacing-row">
-                    <td colSpan={4} className="h-4">
+                    <td colSpan={5} className="h-4">
                       <hr className="border-gray-400" />
                     </td>
                   </tr>
