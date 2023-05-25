@@ -95,7 +95,7 @@ const EditProductLineModal = ({
               </div>
               <div className="mb-[1rem]">
                 <label htmlFor="image" className="font-semibold text-[1.15rem]">
-                  Product Scale
+                  Image
                 </label>
                 <input
                   ref={imageRef}

@@ -50,6 +50,7 @@ const AddInventoryModal = ({
                 </label>
                 <input
                   ref={productCodeRef}
+                  defaultValue={editInventory.productCode}
                   id="orderNumber"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -64,6 +65,7 @@ const AddInventoryModal = ({
                 </label>
                 <input
                   ref={quantityInStockRef}
+                  defaultValue={editInventory.quantityInStock}
                   id="lastName"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -78,6 +80,7 @@ const AddInventoryModal = ({
                 </label>
                 <input
                   ref={officeCodeRef}
+                  defaultValue={editInventory.officeCode}
                   id="requiredDate"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"

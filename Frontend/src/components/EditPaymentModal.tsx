@@ -7,19 +7,19 @@ const EditPaymentModal = ({
   setReload,
   editPayment,
 }: any) => {
-  const customerNumber = useRef<any>("");
-  const checkNumber = useRef<any>("");
-  const paymentDate = useRef<any>("");
-  const amount = useRef<any>("");
+  const customerNumberRef = useRef<any>("");
+  const checkNumberRef = useRef<any>("");
+  const paymentDateRef = useRef<any>("");
+  const amountRef = useRef<any>("");
 
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
     const data = {
-        customerNumber: customerNumber.current.value,
-        checkNumber: checkNumber.current.value,
-        paymentDate: paymentDate.current.value,
-        amount: amount.current.value,
+        customerNumber: customerNumberRef.current.value,
+        checkNumber: checkNumberRef.current.value,
+        paymentDate: paymentDateRef.current.value,
+        amount: amountRef.current.value,
     };
 
     const response = await Axios.put(
@@ -52,7 +52,8 @@ const EditPaymentModal = ({
                   Customer Number
                 </label>
                 <input
-                  ref={customerNumber}
+                  ref={customerNumberRef}
+                  defaultValue={editPayment.customerNumber}
                   id="customerNumber"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -66,7 +67,8 @@ const EditPaymentModal = ({
                 Check Number
                 </label>
                 <input
-                  ref={checkNumber}
+                  ref={checkNumberRef}
+                  defaultValue={editPayment.checkNumber}
                   id="checkNumber"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -80,7 +82,8 @@ const EditPaymentModal = ({
                 Payment Date
                 </label>
                 <input
-                  ref={paymentDate}
+                  ref={paymentDateRef}
+                  defaultValue={editPayment.paymentDate}
                   id="requiredDate"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -94,8 +97,9 @@ const EditPaymentModal = ({
                 Amount
                 </label>
                 <input
-                  ref={amount}
+                  ref={amountRef}
                   id="amount"
+                  defaultValue={editPayment.amount}
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
                 />
