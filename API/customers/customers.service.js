@@ -5,8 +5,30 @@ module.exports = {
     getById,
     create,
     update,
-    delete: _delete
+    delete: _delete,
+    vieworders
 };
+
+async function vieworders() {
+    const viewOrdersbycustomer = 
+    `
+    SELECT 
+        Customers.customerNumber,
+        Customers.customerName,
+        Orders.orderNumber,
+        Orders.orderDate
+        FROM 
+            Customers 
+        JOIN 
+            Orders ON Customers.customerNumber = Orders.customerNumber
+        ORDER BY 
+            Customers.customerNumber, Orders.orderDate;
+  
+    `;
+  
+    return await db.sequelize.query(viewOrdersbycustomer);
+  }
+
 async function getAll() {
     return await db.Customer.findAll();
 }

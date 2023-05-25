@@ -56,11 +56,11 @@ function _delete(req, res, next) {
 
 function createSchema(req, res, next) {
   const schema = Joi.object({
-    orderNumber: Joi.string().empty(""),
+    orderNumber: Joi.number().empty(""),
     productCode: Joi.string().empty(""),
     quantityOrdered: Joi.string().empty(""),
      priceEach: Joi.string().empty(""),
-    orderLineNumber: Joi.string().allow().empty(""),
+    orderLineNumber: Joi.number().allow().empty(""),
 
     
   });

@@ -14,6 +14,7 @@ async function initialize() {
 
     // connect to db
     const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
+    db.sequelize = sequelize;
 
     // init models and add them to the exported db object
     db.Employee = require('../employees/employee.model')(sequelize);
@@ -26,6 +27,7 @@ async function initialize() {
     db.orderDetails = require('../orderdetails/orderdetails.model')(sequelize);
     db.Inventory = require("../inventories/inventory.model")(sequelize);
     db.User = require("../users/user.model")(sequelize);
+
 
 
     db.Employee.belongsTo(db.Office, { foreignKey: "officeCode" });

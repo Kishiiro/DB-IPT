@@ -11,10 +11,18 @@ router.get("/", getAll);
 router.get("/:id", getById);
 router.put("/:id", updateSchema, update);
 router.delete("/:id", _delete);
+router.post("/vieworders", vieworders);
 
 module.exports = router;
 
 // route functions
+
+function vieworders(req, res, next) {
+    customerService
+      .vieworders()
+      .then((viewOrdersbycustomer) => res.json(viewOrdersbycustomer))
+      .catch(next);
+  }
 
 function getAll(req, res, next) {
     customerService.getAll()

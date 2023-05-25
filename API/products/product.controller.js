@@ -12,11 +12,18 @@ router.get("/", getAll);
 router.get("/:id", getById);
 router.put("/:id", updateSchema, update);
 router.delete("/:id", _delete);
+router.post("/salesbymonth", sales);
 
 module.exports = router;
 
 // route functions
 
+function sales(req, res, next) {
+  productService
+    .sales()
+    .then((salesbymonth) => res.json(salesbymonth))
+    .catch(next);
+}
 function getAll(req, res, next) {
   productService
     .getAll()

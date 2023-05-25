@@ -58,8 +58,8 @@ function _delete(req, res, next) {
 function createSchema(req, res, next) {
   const schema = Joi.object({
     orderNumber: Joi.number().required(),
-    orderDate: Joi.date().required(),
-    requiredDate: Joi.date().required(),
+    orderDate: Joi.date().allow(null).required(),
+    requiredDate: Joi.date().allow(null).required(),
     shippedDate: Joi.date().allow(null).required(),
     status: Joi.string().required(),
     comments: Joi.string().allow(null).required(),

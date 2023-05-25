@@ -12,8 +12,36 @@ router.get("/", getAll);
 router.get("/:id", getById);
 router.put("/:id", updateSchema, update);
 router.delete("/:id", _delete);
+router.post("/create-procedure", createProcedure);
+router.post("/processpayment", processSchema, process);
+
+
 
 module.exports = router;
+
+// route functions
+function processSchema(req, res, next) {
+  const schema = Joi.object({
+    customerNum: Joi.number().required(),
+    paymentAmount: Joi.number().required(),
+    paymentType: Joi.string().required()
+  });
+  validateRequest(req, next, schema);
+}
+
+
+function process(req, res, next) {
+  paymentService
+    .process(req.body)
+    .then(() => res.json({ message: "Payment Processed" }))
+    .catch(next);
+}
+function createProcedure(req, res, next) {
+  paymentService
+    .createProcedure()
+    .then(() => res.json({ message: "Stored procedure has been created" }))
+    .catch(next);
+}
 
 // route functions
 

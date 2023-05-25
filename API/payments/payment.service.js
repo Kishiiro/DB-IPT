@@ -1,5 +1,7 @@
 // const bcrypt = require('bcryptjs');
 const db = require("_helpers/db");
+const { Sequelize } = require('sequelize');
+
 
 module.exports = {
   getAll,
@@ -7,7 +9,70 @@ module.exports = {
   create,
   update,
   delete: _delete,
+  createProcedure,
+  process
 };
+
+async function process(data) {
+  const processPayment = `
+  CALL ProcessPayment(:customerNum,:paymentAmount,:paymentType)
+  `;
+
+  await db.sequelize.query(processPayment, 
+    { 
+      replacements: { 
+        customerNum: data.customerNum, 
+        paymentAmount: data.paymentAmount, 
+        paymentType: data.paymentType
+      }, 
+      type: Sequelize.QueryTypes.RAW 
+    }
+  );
+}
+
+async function createProcedure() {
+  const createPaymentProcedure = 
+  `
+  CREATE PROCEDURE ProcessPayment(
+    IN in_customerNumber INT, 
+    IN in_amount DECIMAL(10,2), 
+    IN in_paymentType ENUM('cash', 'credit')
+  )
+  BEGIN
+    DECLARE customerExists INT;
+    DECLARE currentCreditLimit DECIMAL(10,2);
+  
+    SELECT COUNT(*) INTO customerExists FROM customers WHERE customerNumber = in_customerNumber;
+    SELECT creditLimit INTO currentCreditLimit FROM customers WHERE customerNumber = in_customerNumber;
+  
+    IF customerExists > 0 THEN
+      IF in_paymentType = 'credit' THEN
+        IF currentCreditLimit >= in_amount THEN
+          UPDATE customers SET creditLimit = creditLimit - in_amount WHERE customerNumber = in_customerNumber;
+          INSERT INTO payments(customerNumber, amount, paymentType, paymentDate, status) 
+          VALUES (in_customerNumber, in_amount, in_paymentType, CURDATE(), 'approved');
+        ELSE
+          INSERT INTO payments(customerNumber, amount, paymentType, paymentDate, status) 
+          VALUES (in_customerNumber, in_amount, in_paymentType, CURDATE(), 'denied');
+        END IF;
+      ELSE
+        INSERT INTO payments(customerNumber, amount, paymentType, paymentDate, status) 
+        VALUES (in_customerNumber, in_amount, in_paymentType, CURDATE(), 'approved');
+      END IF;
+    ELSE
+      INSERT INTO customers(customerNumber, creditLimit) VALUES (in_customerNumber, in_amount);
+      INSERT INTO payments(customerNumber, amount, paymentType, paymentDate, status) 
+      VALUES (in_customerNumber, in_amount, in_paymentType, CURDATE(), 'approved');
+    END IF;
+  
+  END 
+  
+
+
+  `;
+
+  await db.sequelize.query(createPaymentProcedure);
+}
 
 async function getAll() {
   return await db.payments.findAll();

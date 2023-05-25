@@ -7,7 +7,36 @@ module.exports = {
   create,
   update,
   delete: _delete,
+  sales
 };
+
+async function sales() {
+  const salesbymonth = 
+  `
+  SELECT
+  YEAR(orderDate) AS year,
+  MONTH(orderDate) AS month,
+    productName,
+    SUM(quantityOrdered) AS totalQuantity,
+    SUM(quantityOrdered * priceEach) AS totalSales
+FROM
+    Orders
+    JOIN OrderDetails ON Orders.orderNumber = OrderDetails.orderNumber
+    JOIN Products ON OrderDetails.productCode = Products.productCode
+GROUP BY
+    YEAR(orderDate),
+    MONTH(orderDate),
+    productName
+ORDER BY
+    YEAR(orderDate),
+    MONTH(orderDate)
+
+  `;
+
+  return await db.sequelize.query(salesbymonth);
+}
+
+  
 
 async function getAll() {
   return await db.Product.findAll();
