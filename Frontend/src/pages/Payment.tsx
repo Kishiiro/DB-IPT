@@ -9,7 +9,7 @@ const Payment = () => {
   const [payments, setPayments] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editIventory, setEditPayment] = useState<any>({});
+  const [editPayment, setEditPayment] = useState<any>({});
   const [reload, setReload] = useState(0);
   const navigate = useNavigate();
 
@@ -38,7 +38,7 @@ const Payment = () => {
       )}
       {showEditModal && (
         <EditPaymentModal
-          editUser={editIventory}
+          editPayment={editPayment}
           setReload={setReload}
           setShowEditModal={setShowEditModal}
         />

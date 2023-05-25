@@ -17,7 +17,7 @@ const AddPaymentModal = ({ setShowModal, setReload }: any) => {
         amount: amount.current.value, 
     };
 
-    const response = await Axios.post("/inventories/create", data);
+    const response = await Axios.post("/payments/create", data);
     setReload((prev: any) => prev + 1);
     setShowModal(false);
     console.log(data);
@@ -30,7 +30,7 @@ const AddPaymentModal = ({ setShowModal, setReload }: any) => {
       className="flex flex-col justify-center items-center bg-white"
     >
       <h1 className="font-bold text-[2rem] mb-[1.5rem] text-sky-400">
-        Add Inventory
+        Add Payments
       </h1>
       <form onSubmit={submitHandler}>
         <div className="flex gap-8 items-center">

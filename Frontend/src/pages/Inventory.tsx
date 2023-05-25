@@ -38,7 +38,7 @@ const Inventory = () => {
       )}
       {showEditModal && (
         <EditInventoryModal
-          editUser={editIventory}
+          editInventory={editIventory}
           setReload={setReload}
           setShowEditModal={setShowEditModal}
         />
