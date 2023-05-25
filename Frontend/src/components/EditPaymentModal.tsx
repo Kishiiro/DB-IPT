@@ -98,8 +98,8 @@ const EditPaymentModal = ({
                 </label>
                 <input
                   ref={amountRef}
-                  id="amount"
                   defaultValue={editPayment.amount}
+                  id="amount"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
                 />
