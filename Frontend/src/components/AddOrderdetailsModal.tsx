@@ -4,20 +4,20 @@ import Axios from "axios";
 
 const AddOrderdetailsModal = ({ setShowModal, setReload }: any) => {
   const orderNumberRef = useRef<any>("");
-  const productCode = useRef<any>("");
-  const quantityOrdered = useRef<any>("");
-  const priceEach = useRef<any>("");
-  const orderLineNumber = useRef<any>("");
+  const productCodeRef = useRef<any>("");
+  const quantityOrderedRef = useRef<any>("");
+  const priceEachRef = useRef<any>("");
+  const orderLineNumberRef = useRef<any>("");
 
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
     const data = {
-      orderNumber: Number(orderNumberRef.current.value),
-      orderDate: productCode.current.value,
-      requiredDate: quantityOrdered.current.value,
-      priceEach: priceEach.current.value,
-      orderLineNumber: orderLineNumber.current.value,
+      orderNumber: orderNumberRef.current.value,
+      productCode: productCodeRef.current.value,
+      quantityOrdered: quantityOrderedRef.current.value,
+      priceEach: priceEachRef.current.value,
+      orderLineNumber: orderLineNumberRef.current.value,
     };
 
     const response = await Axios.post("/orderdetails/create", data);
@@ -61,7 +61,7 @@ const AddOrderdetailsModal = ({ setShowModal, setReload }: any) => {
                   Product Code
                 </label>
                 <input
-                  ref={productCode}
+                  ref={productCodeRef}
                   id="productCode"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -75,7 +75,7 @@ const AddOrderdetailsModal = ({ setShowModal, setReload }: any) => {
                   Quantity Ordered
                 </label>
                 <input
-                  ref={quantityOrdered}
+                  ref={quantityOrderedRef}
                   id="quantityOrdered"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -89,7 +89,7 @@ const AddOrderdetailsModal = ({ setShowModal, setReload }: any) => {
                   Price Each
                 </label>
                 <input
-                  ref={priceEach}
+                  ref={priceEachRef}
                   id="priceEach"
                   type="text"
                   className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"
@@ -106,7 +106,7 @@ const AddOrderdetailsModal = ({ setShowModal, setReload }: any) => {
                     Order Line Number
                   </label>
                   <input
-                    ref={orderLineNumber}
+                    ref={orderLineNumberRef}
                     id="orderLineNumber"
                     type="text"
                     className="block mt-[0.5rem] bg-white border border-solid border-gray-300 h-[2.5rem] w-[18rem] outline-none p-[1rem] rounded"

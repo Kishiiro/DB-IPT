@@ -21,7 +21,7 @@ const AddOrderModal = ({ setShowModal, setReload }: any) => {
       status: statusRef.current.value,
       comments:
         commentsRef.current.value == "" ? null : commentsRef.current.value,
-      customerNumber: customerNumberRef.current.value,
+      customerNumber: Number(customerNumberRef.current.value),
     };
 
     const response = await Axios.post("/orders/create", data);
